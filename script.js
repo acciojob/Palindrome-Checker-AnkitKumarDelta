@@ -1,19 +1,20 @@
 function palindrome(str) {
-    // keep only alphanumeric characters and convert to lowercase
-    let cleaned = "";
-    for (let ch of str) {
-        if (/[a-zA-Z0-9]/.test(ch)) {
-            cleaned += ch.toLowerCase();
+    const check = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    let str2 = '';
+    for (let i = 0; i < str.length; i++) {
+        if (check.includes(str[i])) {
+            str2 += str[i].toLowerCase();   // convert to lowercase
         }
     }
 
-    // two-pointer check
-    let l = 0, r = cleaned.length - 1;
+    let l = 0, r = str2.length - 1;
     while (l < r) {
-        if (cleaned[l] !== cleaned[r]) return false;
+        if (str2[l] !== str2[r]) return false;
         l++;
         r--;
     }
+
     return true;
 }
 
